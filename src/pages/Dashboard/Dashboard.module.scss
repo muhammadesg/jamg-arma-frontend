@@ -1,0 +1,572 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+// ── Page shell ────────────────────────────────────────────────
+.page {
+  @include flex(column, flex-start, stretch);
+  gap: 24px;
+  padding: 28px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+// ── Page header ───────────────────────────────────────────────
+.pageHeader {
+  @include flex(row, space-between, flex-start);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.pageTitle {
+  font-size: 26px;
+  font-weight: 800;
+  color: $text-primary;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.pageSubtitle {
+  font-size: 13.5px;
+  color: $text-muted;
+  margin: 4px 0 0;
+}
+
+.headerMeta {
+  @include flex(row, flex-end, center);
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.liveTag {
+  @include flex(row, flex-start, center);
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: $primary-green-dark;
+  background: $primary-green-light;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+
+.liveDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: $primary-green;
+  animation: pulse 1.8s ease infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.85); }
+}
+
+.dateBadge {
+  font-size: 12px;
+  color: $text-secondary;
+  background: $body-bg;
+  border: 1px solid $border-color;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+
+// ── KPI grid ──────────────────────────────────────────────────
+.kpiGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+
+  @include responsive-tablet { grid-template-columns: repeat(2, 1fr); }
+  @include responsive-mobile { grid-template-columns: 1fr; }
+}
+
+.kpiCard {
+  @include card;
+  padding: 20px 20px 14px;
+  position: relative;
+  overflow: hidden;
+  transition: $transition;
+
+  &:hover { transform: translateY(-2px); box-shadow: $shadow-md; }
+}
+
+// color accents via top border
+.kpi_green  { border-top: 3px solid $primary-green; }
+.kpi_blue   { border-top: 3px solid #3b82f6; }
+.kpi_orange { border-top: 3px solid #f97316; }
+.kpi_teal   { border-top: 3px solid #0ea5e9; }
+
+.kpiTop {
+  @include flex(row, space-between, center);
+  margin-bottom: 14px;
+}
+
+.kpiIconWrap {
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  background: $body-bg;
+  @include flex(row, center, center);
+  color: $text-secondary;
+}
+
+.kpi_green  .kpiIconWrap { background: $primary-green-light;  color: $primary-green-dark; }
+.kpi_blue   .kpiIconWrap { background: #dbeafe;               color: #2563eb; }
+.kpi_orange .kpiIconWrap { background: #fff7ed;               color: #ea580c; }
+.kpi_teal   .kpiIconWrap { background: #e0f2fe;               color: #0369a1; }
+
+.kpiBadge {
+  @include flex(row, flex-start, center);
+  gap: 2px;
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 12px;
+}
+
+.badgeUp   { background: $primary-green-light; color: $primary-green-dark; }
+.badgeDown { background: $danger-red-light;    color: $danger-red; }
+
+.kpiValue {
+  font-size: 22px;
+  font-weight: 800;
+  color: $text-primary;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+}
+
+.kpiLabel {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: $text-secondary;
+  margin-top: 4px;
+}
+
+.kpiSub {
+  font-size: 11px;
+  color: $text-muted;
+  margin-top: 2px;
+  margin-bottom: 10px;
+}
+
+.sparkline {
+  width: 100%;
+  height: 36px;
+  display: block;
+}
+
+// ── Charts row ─────────────────────────────────────────────────
+.chartsRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+
+  @include responsive-mobile { grid-template-columns: 1fr; }
+}
+
+.chartCard {
+  @include card;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.chartHeader {
+  @include flex(row, space-between, flex-start);
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.cardTitle {
+  font-size: 15px;
+  font-weight: 700;
+  color: $text-primary;
+  margin: 0;
+}
+
+.cardSub {
+  font-size: 12px;
+  color: $text-muted;
+  margin: 3px 0 0;
+}
+
+.cardHeaderRow {
+  @include flex(row, space-between, center);
+  margin-bottom: 16px;
+}
+
+.chartLegend {
+  @include flex(row, flex-end, center);
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.legendItem {
+  @include flex(row, flex-start, center);
+  gap: 6px;
+  font-size: 11.5px;
+  color: $text-secondary;
+}
+
+.legendDotDark  { width: 10px; height: 3px; border-radius: 2px; background: #1e293b; display: inline-block; }
+.legendDotGreen { width: 10px; height: 3px; border-radius: 2px; background: $primary-green; display: inline-block; }
+
+.zoneLegend {
+  @include flex(row, flex-end, center);
+  gap: 12px;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+}
+
+.zoneItem {
+  @include flex(row, flex-start, center);
+  gap: 5px;
+  font-size: 11px;
+  color: $text-secondary;
+}
+
+.zoneDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.lineChart {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.barChart {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+// ── Bottom row ─────────────────────────────────────────────────
+.bottomRow {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 20px;
+
+  @include responsive-mobile { grid-template-columns: 1fr; }
+}
+
+// ── Activity card ──────────────────────────────────────────────
+.activityCard {
+  @include card;
+  padding: 20px;
+}
+
+.viewAll {
+  font-size: 12px;
+  font-weight: 600;
+  color: $primary-green-dark;
+  background: $primary-green-light;
+  border: none;
+  padding: 5px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: $transition;
+
+  &:hover { background: darken(#dcfce7, 5%); }
+}
+
+.activityList {
+  @include flex(column, flex-start, stretch);
+  gap: 0;
+}
+
+.activityItem {
+  @include flex(row, flex-start, center);
+  gap: 12px;
+  padding: 11px 0;
+  border-bottom: 1px solid $border-color;
+
+  &:last-child { border-bottom: none; }
+}
+
+.activityAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  @include flex(row, center, center);
+  flex-shrink: 0;
+}
+
+.statusCall    { background: $primary-green-light; color: $primary-green-dark; }
+.statusPaid    { background: #dbeafe;              color: #2563eb; }
+.statusMiss    { background: #f1f5f9;              color: $text-muted; }
+.statusProblem { background: $danger-red-light;    color: $danger-red; }
+
+.activityContent { flex: 1; min-width: 0; }
+
+.activityName {
+  font-size: 13px;
+  font-weight: 600;
+  color: $text-primary;
+  @include truncate;
+}
+
+.activityAction {
+  font-size: 11.5px;
+  color: $text-muted;
+  margin-top: 2px;
+}
+
+.activityTimePill {
+  @include flex(row, flex-start, center);
+  gap: 4px;
+  font-size: 10.5px;
+  color: $text-muted;
+  white-space: nowrap;
+  background: $body-bg;
+  padding: 3px 7px;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+// ── Goal card ──────────────────────────────────────────────────
+.goalCard {
+  @include card;
+  padding: 20px;
+}
+
+.goalPctBadge {
+  font-size: 13px;
+  font-weight: 800;
+  color: $primary-green-dark;
+  background: $primary-green-light;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.goalNumbers {
+  @include flex(row, flex-start, baseline);
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.goalCurrent {
+  font-size: 24px;
+  font-weight: 800;
+  color: $text-primary;
+}
+
+.goalSep {
+  font-size: 16px;
+  color: $text-muted;
+}
+
+.goalTarget {
+  font-size: 14px;
+  color: $text-muted;
+  font-weight: 500;
+}
+
+.goalTrack {
+  height: 8px;
+  background: $border-color;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.goalFill {
+  height: 100%;
+  background: linear-gradient(90deg, $primary-green-dark, $primary-green);
+  border-radius: 4px;
+  transition: width 0.8s ease;
+}
+
+.goalSubLine {
+  @include flex(row, flex-start, center);
+  gap: 5px;
+  font-size: 11.5px;
+  color: $text-muted;
+  margin-bottom: 20px;
+}
+
+.goalStats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  border-top: 1px solid $border-color;
+  padding-top: 16px;
+  margin-bottom: 20px;
+}
+
+.gsStat {
+  @include flex(column, flex-start, center);
+  gap: 4px;
+  text-align: center;
+}
+
+.gsIcon {
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  @include flex(row, center, center);
+  margin-bottom: 4px;
+}
+
+.gsGreen { background: $primary-green-light; color: $primary-green-dark; }
+.gsRed   { background: $danger-red-light;    color: $danger-red; }
+.gsGray  { background: #f1f5f9;              color: $text-muted; }
+
+.gsValue {
+  font-size: 18px;
+  font-weight: 800;
+  color: $text-primary;
+}
+
+.gsLabel {
+  font-size: 10.5px;
+  color: $text-muted;
+  text-align: center;
+}
+
+// Operator section inside goal card
+.operatorSection {
+  border-top: 1px solid $border-color;
+  padding-top: 16px;
+}
+
+.opRow {
+  @include flex(row, flex-start, center);
+  gap: 10px;
+  margin-bottom: 10px;
+
+  &:last-child { margin-bottom: 0; }
+}
+
+.opAvatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #334155;
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  @include flex(row, center, center);
+  flex-shrink: 0;
+}
+
+.opInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.opName {
+  font-size: 12px;
+  font-weight: 600;
+  color: $text-primary;
+  @include truncate;
+  margin-bottom: 4px;
+}
+
+.opBar {
+  height: 4px;
+  background: $border-color;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.opFill {
+  height: 100%;
+  background: $primary-green;
+  border-radius: 2px;
+}
+
+.opPct {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: $primary-green-dark;
+  flex-shrink: 0;
+}
+
+// ── Region section ─────────────────────────────────────────────
+.regionSection {
+  @include card;
+  padding: 24px;
+}
+
+.regionGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-top: 4px;
+
+  @include responsive-tablet { grid-template-columns: repeat(2, 1fr); }
+  @include responsive-mobile { grid-template-columns: 1fr; }
+}
+
+.regionCard {
+  border: 1.5px solid $border-color;
+  border-radius: 10px;
+  padding: 14px;
+  transition: $transition;
+  cursor: default;
+
+  &:hover { transform: translateY(-2px); box-shadow: $shadow-sm; }
+}
+
+.region_red    { border-color: rgba(239,68,68,0.35);  background: rgba(239,68,68,0.03); }
+.region_orange { border-color: rgba(249,115,22,0.35); background: rgba(249,115,22,0.03); }
+.region_green  { border-color: rgba(34,197,94,0.35);  background: rgba(34,197,94,0.03); }
+
+.regionHeader {
+  @include flex(row, flex-start, center);
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.regionName {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: $text-primary;
+}
+
+.regionBody {
+  @include flex(column, flex-start, stretch);
+  gap: 4px;
+  margin-bottom: 10px;
+}
+
+.regionRow {
+  @include flex(row, space-between, center);
+}
+
+.regionKey {
+  font-size: 11.5px;
+  color: $text-muted;
+}
+
+.regionVal {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.regionDebtors {
+  font-size: 13px;
+  font-weight: 600;
+  color: $text-primary;
+}
+
+.regionBarTrack {
+  height: 4px;
+  background: $border-color;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.regionBarFill {
+  height: 100%;
+  border-radius: 2px;
+  opacity: 0.75;
+  transition: width 0.6s ease;
+}

@@ -1,0 +1,64 @@
+{
+  "brand": "Qarz Boshqaruvi",
+  "brandSub": "CRM tizimi",
+  "nav": {
+    "dashboard": "Boshqaruv paneli",
+    "citizens": "Fuqarolar bazasi",
+    "ai": "AI tahlil",
+    "callcenter": "Call-center",
+    "users": "Foydalanuvchilar",
+    "reports": "Hisobotlar"
+  },
+  "search": "JSHSHIR yoki ism bo'yicha qidirish...",
+  "copyright": "© 2026 O'zbekiston Respublikasi",
+  "callcenter": {
+    "title": "Call-center boshqaruvi",
+    "subtitle": "Avtomatik qo'ng'iroqlar tizimi va operator paneli",
+    "queue": "Qo'ng'iroqlar navbati",
+    "debtors": "ta qarzdor",
+    "queueSubtitle": "AI tomonidan ustuvorlik asosida tartiblangan",
+    "highRisk": "Yuqori xavf",
+    "mediumRisk": "O'rta xavf",
+    "lowRisk": "Past xavf",
+    "debt": "Qarz",
+    "callBtn": "Qo'ng'iroq",
+    "activeCall": "Faol qo'ng'iroq",
+    "active": "Faol",
+    "debtAmount": "Qarz summasi",
+    "paymentProb": "To'lov ehtimoli",
+    "riskLevel": "Xavf darajasi",
+    "callResult": "Qo'ng'iroq natijasi:",
+    "paid": "To'landi",
+    "wrongInfo": "Noto'g'ri ma'lumot",
+    "problem": "Muammoli",
+    "todayStats": "Bugungi statistika",
+    "totalCalls": "Jami qo'ng'iroqlar",
+    "successful": "Muvaffaqiyatli",
+    "problematic": "Muammoli",
+    "noAnswer": "Javob bermadilar",
+    "todayEfficiency": "Bugungi samaradorlik",
+    "aiRecommendations": "AI tavsiyalari",
+    "bestTime": "Eng yaxshi vaqt",
+    "bestTimeDesc": "14:00-17:00 oralig'ida qo'ng'iroqlar 23% samaraliroq"
+  },
+  "dashboard": {
+    "title": "Boshqaruv paneli",
+    "subtitle": "Tizim umumiy ko'rsatkichlari"
+  },
+  "citizens": {
+    "title": "Fuqarolar bazasi",
+    "subtitle": "Barcha qarzdorlar ro'yxati"
+  },
+  "ai": {
+    "title": "AI tahlil",
+    "subtitle": "Sun'iy intellekt tahlili va bashoratlari"
+  },
+  "users": {
+    "title": "Foydalanuvchilar",
+    "subtitle": "Tizim foydalanuvchilari boshqaruvi"
+  },
+  "reports": {
+    "title": "Hisobotlar",
+    "subtitle": "Batafsil moliyaviy hisobotlar"
+  }
+}

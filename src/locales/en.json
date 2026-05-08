@@ -1,0 +1,64 @@
+{
+  "brand": "Debt Management",
+  "brandSub": "CRM System",
+  "nav": {
+    "dashboard": "Dashboard",
+    "citizens": "Citizens Base",
+    "ai": "AI Analysis",
+    "callcenter": "Call Center",
+    "users": "Users",
+    "reports": "Reports"
+  },
+  "search": "Search by ID or name...",
+  "copyright": "© 2026 Republic of Uzbekistan",
+  "callcenter": {
+    "title": "Call Center Management",
+    "subtitle": "Automated call system and operator panel",
+    "queue": "Call Queue",
+    "debtors": "debtors",
+    "queueSubtitle": "Prioritized by AI",
+    "highRisk": "High Risk",
+    "mediumRisk": "Medium Risk",
+    "lowRisk": "Low Risk",
+    "debt": "Debt",
+    "callBtn": "Call",
+    "activeCall": "Active Call",
+    "active": "Active",
+    "debtAmount": "Debt Amount",
+    "paymentProb": "Payment Probability",
+    "riskLevel": "Risk Level",
+    "callResult": "Call Result:",
+    "paid": "Paid",
+    "wrongInfo": "Wrong Information",
+    "problem": "Problem",
+    "todayStats": "Today's Statistics",
+    "totalCalls": "Total Calls",
+    "successful": "Successful",
+    "problematic": "Problematic",
+    "noAnswer": "No Answer",
+    "todayEfficiency": "Today's Efficiency",
+    "aiRecommendations": "AI Recommendations",
+    "bestTime": "Best Time",
+    "bestTimeDesc": "Calls between 14:00-17:00 are 23% more effective"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "subtitle": "System overview indicators"
+  },
+  "citizens": {
+    "title": "Citizens Base",
+    "subtitle": "List of all debtors"
+  },
+  "ai": {
+    "title": "AI Analysis",
+    "subtitle": "Artificial intelligence analysis and forecasts"
+  },
+  "users": {
+    "title": "Users",
+    "subtitle": "System user management"
+  },
+  "reports": {
+    "title": "Reports",
+    "subtitle": "Detailed financial reports"
+  }
+}
