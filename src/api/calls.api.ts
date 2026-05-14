@@ -7,7 +7,7 @@ export const callsApi = {
     api.post<any>('queue', { debtor_id }, config),
   startCall: (data: { debtor_id: number; queue_entry_id?: number }, config?: AxiosRequestConfig) =>
     api.post<any>('calls/start', data, config),
-  endCall: (id: number, data: { result: string; category?: string; notes?: string }, config?: AxiosRequestConfig) =>
+  endCall: (id: number, data: { result: string; category?: string; notes?: string; paid_amount?: number }, config?: AxiosRequestConfig) =>
     api.patch<any>(`calls/${id}/end`, data, config),
   sessions: (config?: AxiosRequestConfig) => api.get<any>('calls/sessions', config),
   

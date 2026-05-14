@@ -38,8 +38,8 @@ export const useStartCall = () => {
 export const useEndCall = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: ({ id, result, category, notes }: { id: number | string; result: string; category?: string; notes?: string }) =>
-      callsApi.endCall(Number(id), { result, category, notes }),
+    mutationFn: ({ id, result, category, notes, paid_amount }: { id: number | string; result: string; category?: string; notes?: string; paid_amount?: number }) =>
+      callsApi.endCall(Number(id), { result, category, notes, paid_amount }),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['callQueue'] });
       queryClient.invalidateQueries({ queryKey: ['callSessions'] });

@@ -129,9 +129,9 @@ export default function AIAnalysis() {
 
   // Map real data from backend
   const kpiData = recsData.kpi ? [
-    { icon: Target, value: `${recsData.kpi.bashorat_aniqligi}%`, label: 'Bashorat aniqligi', sub: "Tizim ma'lumotlariga asosan", iconBg: '#dcfce7', iconColor: '#16a34a' },
+    // { icon: Target, value: `${recsData.kpi.bashorat_aniqligi}%`, label: 'Bashorat aniqligi', sub: "Tizim ma'lumotlariga asosan", iconBg: '#dcfce7', iconColor: '#16a34a' },
     { icon: AlertTriangle, value: recsData.kpi.yuqori_xavf_count?.toString() || '0', label: 'Yuqori xavfli qarzdorlar', sub: "Tezkor choralar talab etiladi", iconBg: '#fee2e2', iconColor: '#ef4444' },
-    { icon: Brain, value: recsData.kpi.avto_tavsiyalar?.toString() || '0', label: 'Avtomatik tavsiyalar', sub: 'Tizimdagi mavjud holatlar', iconBg: '#f1f5f9', iconColor: '#475569' },
+    // { icon: Brain, value: recsData.kpi.avto_tavsiyalar?.toString() || '0', label: 'Avtomatik tavsiyalar', sub: 'Tizimdagi mavjud holatlar', iconBg: '#f1f5f9', iconColor: '#475569' },
     { icon: TrendingUp, value: `${recsData.kpi.prognoz_qaytish}%`, label: 'O\'rtacha to\'lov ehtimoli', sub: 'Hozirgi prognoz qaytish', iconBg: '#dcfce7', iconColor: '#16a34a' },
   ] : FALLBACK_KPI;
 

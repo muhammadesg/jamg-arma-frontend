@@ -4209,4 +4209,23 @@ export const ModuleStyles = createGlobalStyle`
 .AIAnalysis__aiChatButton:disabled { background: #93c5fd; cursor: not-allowed; }
 .AIAnalysis__aiChatOutput { margin-top: 8px; padding: 16px; background: #f8fafc; border: 1px solid #f1f5f9; border-radius: 8px; white-space: pre-wrap; font-size: 14px; color: #334155; }
 
+/* CallQueue */
+.CallQueue__emptyQueue {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 40px 16px;
+  text-align: center;
+  color: #94a3b8;
+  font-size: 14px;
+  font-weight: 500;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border: 2px dashed #e2e8f0;
+  border-radius: 12px;
+  margin: 12px 0;
+  user-select: none;
+}
+
 `;

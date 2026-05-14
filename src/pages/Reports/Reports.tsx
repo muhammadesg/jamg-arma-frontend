@@ -16,7 +16,7 @@ function LineChart({ data }: any) {
   const W = 520, H = 200, PL = 40, PB = 36, PT = 16, PR = 16;
   const cW = W - PL - PR;
   const cH = H - PT - PB;
-  
+
   // Find max value for dynamic scaling
   const maxGiven = Math.max(...(data.given || [0]));
   const maxReturned = Math.max(...(data.returned || [0]));
@@ -192,9 +192,9 @@ export default function Reports() {
 
     if (format === 'CSV formatda' || format === 'Excel formatda') {
       const isExcel = format === 'Excel formatda';
-      
+
       let csv = 'Mintaqa,Xavf ulushi (%),Qaytarish foizi (%),Holat\n';
-      
+
       regionsTable.forEach((r: any) => {
         csv += `${r.name},${r.debt},${r.rate},${r.status}\n`;
       });
@@ -357,8 +357,8 @@ export default function Reports() {
         </div>
         <div className={styles.exportBtns}>
           {['PDF formatda', 'Excel formatda', 'CSV formatda', "To'liq hisobot"].map((label) => (
-            <button 
-              key={label} 
+            <button
+              key={label}
               className={styles.exportFormatBtn}
               onClick={() => handleExport(label)}
               disabled={!data}

@@ -1,4 +1,4 @@
-import { Phone } from 'lucide-react';
+import { Phone, Inbox } from 'lucide-react';
 import { useLanguage } from '../../contexts/useLanguage';
 import { styles } from './CallQueue.styles';
 
@@ -52,7 +52,11 @@ export default function CallQueue({ activeCallId, onCallStart, data = [] }) {
           </div>
         ))}
         {data.length === 0 && (
-          <div className={styles.emptyQueue}>Navbat bo'sh</div>
+          <div className={styles.emptyQueue}>
+            <Inbox size={32} strokeWidth={1.5} style={{ color: '#cbd5e1' }} />
+            <span>Navbat bo'sh</span>
+            <span style={{ fontSize: '12px', color: '#cbd5e1', fontWeight: 400 }}>Hozircha navbatda hech kim yo'q</span>
+          </div>
         )}
       </div>
     </div>

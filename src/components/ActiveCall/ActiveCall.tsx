@@ -30,6 +30,9 @@ function getInitials(name = '') {
 export default function ActiveCall({ session, onEnd }) {
   const { t } = useLanguage();
   const [elapsed, setElapsed] = useState(0);
+  const [pendingResult, setPendingResult] = useState<{result: string, category: string} | null>(null);
+  const [paidAmount, setPaidAmount] = useState('');
+  
   const endCallMutation = useEndCall();
   const { data: buttons, isLoading: buttonsLoading } = useCallResultButtons();
 
@@ -40,11 +43,23 @@ export default function ActiveCall({ session, onEnd }) {
     return () => clearInterval(timer);
   }, []);
 
-  const handleResult = (result, category) => {
+  const handleResultClick = (result, category) => {
+    if (category === 'successful') {
+      setPendingResult({ result, category });
+    } else {
+      handleConfirmResult(result, category);
+    }
+  };
+
+  const handleConfirmResult = (result?: string, category?: string) => {
+    const res = result || pendingResult?.result;
+    const cat = category || pendingResult?.category;
+    
     endCallMutation.mutate({
       id: session.id,
-      result,
-      category,
+      result: res,
+      category: cat,
+      paid_amount: paidAmount ? Number(paidAmount) : undefined
     }, {
       onSuccess: () => {
         onEnd();
@@ -115,6 +130,31 @@ export default function ActiveCall({ session, onEnd }) {
           <span className={styles.resultLabel}>{t.callcenter?.callResult ?? 'Qo\'ng\'iroq natijasi'}</span>
           {endCallMutation.isPending || buttonsLoading ? (
             <div style={{ textAlign: 'center', padding: '10px' }}><Spin /></div>
+          ) : pendingResult ? (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '10px' }}>
+              <label style={{ fontSize: '13px', color: '#475569' }}>To'langan summani kiriting (so'm)</label>
+              <input 
+                type="number" 
+                value={paidAmount} 
+                onChange={e => setPaidAmount(e.target.value)} 
+                placeholder="Masalan: 500000"
+                style={{ padding: '10px 12px', border: '1px solid #cbd5e1', borderRadius: '6px', outline: 'none', width: '100%' }}
+              />
+              <div style={{ display: 'flex', gap: '8px' }}>
+                <button 
+                  onClick={() => setPendingResult(null)} 
+                  style={{ flex: 1, padding: '8px', background: '#f1f5f9', color: '#475569', border: 'none', borderRadius: '6px', cursor: 'pointer', fontWeight: 500 }}
+                >
+                  Bekor qilish
+                </button>
+                <button 
+                  onClick={() => handleConfirmResult()} 
+                  style={{ flex: 1, padding: '8px', background: '#22c55e', color: 'white', border: 'none', borderRadius: '6px', cursor: 'pointer', fontWeight: 500 }}
+                >
+                  Tasdiqlash
+                </button>
+              </div>
+            </div>
           ) : (
             <div className={styles.resultBtns}>
               {Array.isArray(buttons) && buttons.map((btn) => {
@@ -128,7 +168,7 @@ export default function ActiveCall({ session, onEnd }) {
                   <button
                     key={btn.id}
                     className={`${styles.resultBtn} ${colorClass}`}
-                    onClick={() => handleResult(btn.label, btn.category)}
+                    onClick={() => handleResultClick(btn.label, btn.category)}
                   >
                     <Icon size={16} />
                     {btn.label}
@@ -140,21 +180,21 @@ export default function ActiveCall({ session, onEnd }) {
                   <>
                     <button
                         className={`${styles.resultBtn} ${styles.resultPaid}`}
-                        onClick={() => handleResult('paid', 'successful')}
+                        onClick={() => handleResultClick('paid', 'successful')}
                     >
                         <CheckCircle size={16} />
                         {t.callcenter?.paid ?? 'To\'landi'}
                     </button>
                     <button
                         className={`${styles.resultBtn} ${styles.resultWrong}`}
-                        onClick={() => handleResult('wrong_info', 'problematic')}
+                        onClick={() => handleResultClick('wrong_info', 'problematic')}
                     >
                         <AlertTriangle size={16} />
                         {t.callcenter?.wrongInfo ?? 'Noto\'g\'ri ma\'lumot'}
                     </button>
                     <button
                         className={`${styles.resultBtn} ${styles.resultProblem}`}
-                        onClick={() => handleResult('problem', 'problematic')}
+                        onClick={() => handleResultClick('problem', 'problematic')}
                     >
                         <XCircle size={16} />
                         {t.callcenter?.problem ?? 'Muammo'}

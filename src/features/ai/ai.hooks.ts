@@ -5,7 +5,7 @@ export const useAiRecommendations = () => {
   return useQuery({
     queryKey: ['ai', 'recommendations'],
     queryFn: aiApi.recommendations,
-    refetchInterval: 5000,
+    staleTime: Infinity,
   });
 };
 

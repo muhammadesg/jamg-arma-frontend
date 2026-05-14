@@ -105,7 +105,7 @@ export default function StatsPanel() {
         )}
       </section>
 
-      <section className={styles.section}>
+      {/* <section className={styles.section}>
         <h3 className={styles.sectionTitle}>{t.callcenter?.aiRecommendations ?? 'AI tavsiyalari'}</h3>
 
         {aiLoading ? (
@@ -143,7 +143,7 @@ export default function StatsPanel() {
             )}
           </>
         )}
-      </section>
+      </section> */}
     </aside>
   );
 }

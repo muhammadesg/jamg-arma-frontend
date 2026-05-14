@@ -5,7 +5,7 @@ export const useTodayStats = () => {
   return useQuery({
     queryKey: ['stats', 'today'],
     queryFn: statsApi.today,
-    refetchInterval: 5000,
+    staleTime: Infinity,
   });
 };
 
@@ -13,7 +13,7 @@ export const useOperatorStats = () => {
   return useQuery({
     queryKey: ['stats', 'operator'],
     queryFn: statsApi.operator,
-    refetchInterval: 5000,
+    staleTime: Infinity,
   });
 };
 
@@ -21,7 +21,7 @@ export const useMonthlyStats = (enabled = true) => {
   return useQuery({
     queryKey: ['stats', 'monthly'],
     queryFn: statsApi.monthly,
-    refetchInterval: 5000,
+    staleTime: Infinity,
     enabled,
   });
 };
@@ -30,7 +30,7 @@ export const useAllOperatorsStats = (enabled = true) => {
   return useQuery({
     queryKey: ['stats', 'all'],
     queryFn: statsApi.all,
-    refetchInterval: 5000,
+    staleTime: Infinity,
     enabled,
   });
 };
@@ -39,7 +39,7 @@ export const useReportsStats = (enabled = true) => {
   return useQuery({
     queryKey: ['stats', 'reports'],
     queryFn: statsApi.reports,
-    refetchInterval: 10000,
+    staleTime: Infinity,
     enabled,
   });
 };

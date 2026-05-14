@@ -67,10 +67,10 @@ export default function Header() {
           popupMatchSelectWidth={false}
         />
 
-        <button className={styles.notifBtn}>
+        {/* <button className={styles.notifBtn}>
           <Bell size={18} />
           <span className={styles.badge}>3</span>
-        </button>
+        </button> */}
 
         <div className={styles.userWrapper} ref={dropdownRef}>
           <div
