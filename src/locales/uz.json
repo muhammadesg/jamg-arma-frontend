@@ -47,7 +47,27 @@
   },
   "citizens": {
     "title": "Fuqarolar bazasi",
-    "subtitle": "Barcha qarzdorlar ro'yxati"
+    "subtitle": "Barcha qarzdorlar ro'yxati",
+    "addBtn": "Yangi fuqaro",
+    "editBtn": "Tahrirlash",
+    "addTitle": "Yangi fuqaro qo'shish",
+    "editTitle": "Fuqaro ma'lumotlarini tahrirlash",
+    "form": {
+      "fullName": "F.I.O.",
+      "pinfl": "JSHSHIR",
+      "phone": "Telefon",
+      "region": "Hudud",
+      "category": "Toifa",
+      "debtAmount": "Qarz summasi",
+      "balance": "Qoldiq",
+      "status": "Holat",
+      "paymentProb": "To'lov ehtimoli (%)",
+      "notes": "Izohlar",
+      "save": "Saqlash",
+      "cancel": "Bekor qilish",
+      "required": "Bu maydon majburiy",
+      "pinflSize": "JSHSHIR 14 ta belgidan iborat bo'lishi kerak"
+    }
   },
   "ai": {
     "title": "AI tahlil",

@@ -1,15 +1,7 @@
-import { createContext, useContext, useState, useCallback, type ReactNode } from 'react';
+import { useState, useCallback, type ReactNode } from 'react';
 import { getToken, setToken, removeToken } from '../api/axios';
 import type { User } from '../features/auth/auth.types';
-
-interface AuthContextValue {
-  isAuthenticated: boolean;
-  user: User | null;
-  saveAuth: (token: string, user: User) => void;
-  clearAuth: () => void;
-}
-
-const AuthContext = createContext<AuthContextValue | null>(null);
+import { AuthContext } from './auth.context';
 
 const USER_KEY = 'auth_user';
 
@@ -46,8 +38,3 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   );
 }
 
-export function useAuth(): AuthContextValue {
-  const ctx = useContext(AuthContext);
-  if (!ctx) throw new Error('useAuth must be used inside AuthProvider');
-  return ctx;
-}

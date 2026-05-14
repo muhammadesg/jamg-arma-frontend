@@ -7,8 +7,11 @@ export const getToken = (): string | null => localStorage.getItem(TOKEN_KEY);
 export const setToken = (token: string): void => localStorage.setItem(TOKEN_KEY, token);
 export const removeToken = (): void => localStorage.removeItem(TOKEN_KEY);
 
+const rawBaseURL = import.meta.env.VITE_API_URL ?? 'http://127.0.0.1:8000/api/';
+const baseURL = rawBaseURL.endsWith('/') ? rawBaseURL : `${rawBaseURL}/`;
+
 const axiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_API_URL ?? 'https://06f5-86-62-0-147.ngrok-free.app/api/',
+  baseURL,
   headers: { 'Content-Type': 'application/json' },
 });
 
@@ -23,6 +26,10 @@ axiosInstance.interceptors.request.use((config) => {
 axiosInstance.interceptors.response.use(
   (response) => response,
   (error: AxiosError<{ message?: string; detail?: string }>) => {
+    if (axios.isCancel(error)) {
+      return Promise.reject(error);
+    }
+
     if (error.response?.status === 401) {
       removeToken();
       window.location.href = '/login';

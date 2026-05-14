@@ -1,0 +1,7 @@
+.Dashboard__page { padding: 24px; background: #f9fafb; }
+.Dashboard__pageHeader { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+.Dashboard__kpiGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 24px; }
+.Dashboard__kpiCard { background: white; border-radius: 8px; padding: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+.Dashboard__chartsRow { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 24px; }
+.Dashboard__chartCard { flex: 1 1 300px; background: white; border-radius: 8px; padding: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+.Dashboard__lineChart, .Dashboard__barChart { width: 100%; height: auto; }
